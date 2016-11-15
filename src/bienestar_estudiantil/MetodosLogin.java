@@ -102,9 +102,7 @@ PreparedStatement ps = null;
  
  ps.executeUpdate();
  conect.commit();
- JOptionPane.showMessageDialog(null, "Denuncia guardada Exitosamente");
-       
-            resultado=1;
+resultado=1;
             
 
        
