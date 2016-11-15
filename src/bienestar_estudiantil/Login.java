@@ -25,6 +25,7 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -147,7 +148,7 @@ public Connection Conexion;
      TxtPass.requestFocusInWindow();}
      }
 else
-if(metodoslogin.validar_ingreso(user, pass)==1){
+if(metodoslogin.validar_usuario(user, pass)==1){
                  
         this.dispose();
 

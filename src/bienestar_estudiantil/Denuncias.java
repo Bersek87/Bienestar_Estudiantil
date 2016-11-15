@@ -37,6 +37,7 @@ public class Denuncias extends javax.swing.JFrame {
         NoDenuncia();
         llenarTablaDenuncia();
         mostrarTipoDenuncia();
+        setLocationRelativeTo(null);
                 
     }
      public static String denunciante;
@@ -225,7 +226,6 @@ public class Denuncias extends javax.swing.JFrame {
                                   
                 }
                 txt_no_denuncia.setText(texto);
-                System.out.println(rs.getString("numero")+1);
             }
         } catch (SQLException ex) {
             Logger.getLogger(Denuncias.class.getName()).log(Level.SEVERE, null, ex);
@@ -342,6 +342,14 @@ Class.forName("com.mysql.jdbc.Driver");
         DChFecha = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                cerrando(evt);
+            }
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                cerrando(evt);
+            }
+        });
 
         jTabbedPane1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -401,6 +409,17 @@ Class.forName("com.mysql.jdbc.Driver");
         txt_no_denuncia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_no_denunciaActionPerformed(evt);
+            }
+        });
+        txt_no_denuncia.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_no_denunciaKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_no_denunciaKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_no_denunciaKeyTyped(evt);
             }
         });
 
@@ -697,6 +716,13 @@ Class.forName("com.mysql.jdbc.Driver");
         txt_id_denun.requestFocus();
     }//GEN-LAST:event_btn_nueva_consultaActionPerformed
 
+    private void Cierre(java.awt.event.WindowEvent evt) {                        
+        int op = JOptionPane.showConfirmDialog(this, "Seguro que desea salir","Salir",JOptionPane.YES_NO_OPTION);
+        if(op==JOptionPane.YES_OPTION){
+            System.exit(0);
+        }
+    }
+    
     private void txt_denuncianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_denuncianteActionPerformed
 
     }//GEN-LAST:event_txt_denuncianteActionPerformed
@@ -761,12 +787,8 @@ Class.forName("com.mysql.jdbc.Driver");
         
     }//GEN-LAST:event_btn_select_denunciadoActionPerformed
     
-     private void Cierre(java.awt.event.WindowEvent evt) {                        
-        int op = JOptionPane.showConfirmDialog(this, "Seguro que desea salir","Salir",JOptionPane.YES_NO_OPTION);
-        if(op==JOptionPane.YES_OPTION){
-            System.exit(0);
-        }
-    }
+    
+    
     
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
@@ -803,10 +825,41 @@ Class.forName("com.mysql.jdbc.Driver");
         }
         
     }//GEN-LAST:event_tabla_denunciaMousePressed
-
+    
     private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_SalirActionPerformed
+    boolean visible;
+    private void cerrando(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_cerrando
+        // TODO add your handling code here:
+
+        int op = JOptionPane.showConfirmDialog(this, "Seguro que desea salir","Salir",JOptionPane.YES_NO_OPTION);
+        if(op==JOptionPane.YES_OPTION){
+            visible=false;
+            System.exit(0);
+        }
+        else{
+            Denuncias m = new Denuncias();
+        m.setVisible(true);
+        visible=true;
+        } 
+    }//GEN-LAST:event_cerrando
+
+    private void txt_no_denunciaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_no_denunciaKeyPressed
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_txt_no_denunciaKeyPressed
+
+    private void txt_no_denunciaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_no_denunciaKeyTyped
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_txt_no_denunciaKeyTyped
+
+    private void txt_no_denunciaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_no_denunciaKeyReleased
+        // TODO add your handling code here:
+         
+    }//GEN-LAST:event_txt_no_denunciaKeyReleased
 
     /**
      * @param args the command line arguments

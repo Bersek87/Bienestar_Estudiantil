@@ -348,7 +348,6 @@ public class MenuAlumno extends javax.swing.JFrame {
             }
 
         }
-        System.out.println(ima);
     }//GEN-LAST:event_BtnImagenActionPerformed
 
     private void limpiar(){
@@ -406,7 +405,7 @@ public class MenuAlumno extends javax.swing.JFrame {
 Class.forName("com.mysql.jdbc.Driver");
         Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/bienestar_estudiantil","root","liberal");
 
-     System.out.println(ima);
+
  if (ima==false){ 
  JOptionPane.showMessageDialog(null, "No ha ingresado todos los datos\n Verifique no tenga campos vacios y seleccione una imagen");
  

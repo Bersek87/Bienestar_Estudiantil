@@ -22,6 +22,7 @@ public class Curso extends javax.swing.JFrame {
     public Curso() {
        super("Registro de Cursos");
         initComponents();
+        setLocationRelativeTo(null);
         
         
     }
@@ -101,6 +102,7 @@ public class Curso extends javax.swing.JFrame {
 
         jLabel2.setText("Cod Profesor");
 
+        Registrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Iconos/instalar-el-paquete-icono-5544-16.png"))); // NOI18N
         Registrar.setText("Registrar");
         Registrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,13 +110,15 @@ public class Curso extends javax.swing.JFrame {
             }
         });
 
-        Nuevo.setText("Nuevo");
+        Nuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Iconos/signatura-icono-8756-16.png"))); // NOI18N
+        Nuevo.setText(" Nuevo");
         Nuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NuevoActionPerformed(evt);
             }
         });
 
+        BTNEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Iconos/eliminar-el-paquete-icono-7508-16.png"))); // NOI18N
         BTNEliminar.setText("Eliminar");
         BTNEliminar.setEnabled(false);
         BTNEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -123,6 +127,7 @@ public class Curso extends javax.swing.JFrame {
             }
         });
 
+        Cerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Iconos/solicitud-icono-3907-16.png"))); // NOI18N
         Cerrar.setText("Cerrar");
         Cerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -158,10 +163,10 @@ public class Curso extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Registrar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(BTNEliminar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Cerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18))
+                .addComponent(BTNEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Cerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -237,6 +242,7 @@ public class Curso extends javax.swing.JFrame {
 
         Curso.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
         Curso.setForeground(new java.awt.Color(0, 102, 102));
+        Curso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Iconos/autores-de-los-textos-x-icono-4281-32.png"))); // NOI18N
         Curso.setText("Profesor");
 
         TXTProfesor.addActionListener(new java.awt.event.ActionListener() {
@@ -296,10 +302,10 @@ public class Curso extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(PanelCurso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(10, 10, 10))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))

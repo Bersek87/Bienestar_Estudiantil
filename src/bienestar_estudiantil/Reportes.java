@@ -33,8 +33,13 @@ public class Reportes extends javax.swing.JFrame {
         mostrarCarrerasAlumno();
         mostrarTipoDenuncia();
         llenarCbMaestro();
+        llenarTBAlumno();
+        llenarTBMaestro();
+        llenarTBDenuncias();
         
     }
+    
+        
     private void limpiarAlumno(){
         Date myDate = new Date();
         ch_anio1.setSelected(false);
@@ -58,15 +63,6 @@ public class Reportes extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        Jpanel_reportes1 = new javax.swing.JTabbedPane();
-        jPanel6 = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
-        jPanel7 = new javax.swing.JPanel();
-        jPanel8 = new javax.swing.JPanel();
-        jPanel9 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
-        jComboBox2 = new javax.swing.JComboBox();
         jPanel10 = new javax.swing.JPanel();
         Jpanel_reportes = new javax.swing.JTabbedPane();
         panel_Alumnos = new javax.swing.JPanel();
@@ -107,92 +103,6 @@ public class Reportes extends javax.swing.JFrame {
         dch_rep_denuncia = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        Jpanel_reportes1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane3.setViewportView(jTable3);
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 839, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        Jpanel_reportes1.addTab("Reportes Catedraticos", jPanel6);
-
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 849, Short.MAX_VALUE)
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 359, Short.MAX_VALUE)
-        );
-
-        Jpanel_reportes1.addTab("Asignaturas", jPanel7);
-
-        jButton2.setText("jButton1");
-
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
-        jPanel9.setLayout(jPanel9Layout);
-        jPanel9Layout.setHorizontalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
-                .addGap(88, 88, 88)
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 478, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addGap(151, 151, 151))
-        );
-        jPanel9Layout.setVerticalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel9Layout.createSequentialGroup()
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addGap(76, 76, 76)
-                        .addComponent(jButton2))
-                    .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addGap(87, 87, 87)
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(250, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
-        Jpanel_reportes1.addTab("Denuncias", jPanel8);
 
         Jpanel_reportes.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
@@ -456,7 +366,7 @@ public class Reportes extends javax.swing.JFrame {
                             .addComponent(ch_Cate_Area))))
                 .addGap(57, 57, 57)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(218, Short.MAX_VALUE))
+                .addContainerGap(166, Short.MAX_VALUE))
         );
 
         Jpanel_reportes.addTab("Reportes Catedraticos   ", panle_maestro);
@@ -608,17 +518,13 @@ public class Reportes extends javax.swing.JFrame {
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addComponent(Jpanel_reportes, javax.swing.GroupLayout.PREFERRED_SIZE, 593, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 47, Short.MAX_VALUE))
+                .addGap(0, 10, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(113, 113, 113)
-                .addComponent(Jpanel_reportes1)
-                .addGap(23, 23, 23))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -627,9 +533,7 @@ public class Reportes extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(719, 719, 719)
-                .addComponent(Jpanel_reportes1, javax.swing.GroupLayout.PREFERRED_SIZE, 387, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(0, 99, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -640,7 +544,9 @@ public class Reportes extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -802,7 +708,6 @@ public class Reportes extends javax.swing.JFrame {
     private javax.swing.JComboBox ComboBox_Area;
     private com.toedter.calendar.JYearChooser Jch_anio;
     private javax.swing.JTabbedPane Jpanel_reportes;
-    private javax.swing.JTabbedPane Jpanel_reportes1;
     private javax.swing.JButton btn_genR_al;
     private javax.swing.JButton btn_genR_cat;
     private javax.swing.JButton btn_geneR_denun;
@@ -822,22 +727,14 @@ public class Reportes extends javax.swing.JFrame {
     private javax.swing.JCheckBox ch_no_denuncia;
     private javax.swing.JCheckBox ch_tipo_denuncia;
     private com.toedter.calendar.JDateChooser dch_rep_denuncia;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JTable jTable3;
     private javax.swing.JPanel panelDenuncia;
     private javax.swing.JPanel panel_Alumnos;
     private javax.swing.JPanel panel_denuncia;
@@ -1076,7 +973,95 @@ public class Reportes extends javax.swing.JFrame {
             Logger.getLogger(Reportes.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
+    private void llenarTBMaestro() {
+    String sql="SELECT c.idEmpleado as 'No de Identidad', concat(e.nombreEmpleado,' ', e.apellidoEmpleado) as 'Nombre Completo', v.nombreArea as 'Area',e.emailEmp as 'Correo ELectronico', e.telefonoEmpleado as 'Telefono'FROM Empleado e\n" +
+                   "JOIN Catedratico c\n" +"ON e.idEmpleado = c.idEmpleado\n" +"JOIN Area v\n" +"ON c.idArea = v.idArea";
+        try {
+            operaciones op = new operaciones();
+            ResultSet rs=op.ConsultaBase(sql);
+           ResultSetMetaData Columnas = rs.getMetaData();
+            
+            DefaultTableModel maestro=new DefaultTableModel();
+            int cantidadColumnas = Columnas.getColumnCount();
+            for (int i = 1; i <= cantidadColumnas; i++) {
+                    maestro.addColumn(Columnas.getColumnLabel(i)); //Agrega columnas al modelo con el titulo extraido de la metadata
+             }
+             //Extrae las filas del resultSet y los para al modelo
+                while (rs.next()) {
+                       Object[] fila = new Object[cantidadColumnas];
+                        for (int i = 0; i < cantidadColumnas; i++) {
+                                 fila[i]=rs.getObject(i+1);
+                        }
+                 maestro.addRow(fila); //agregamos al modelo la fila extraida.
+                }
+                
+            tabla_maestros.setModel(maestro);
+            
+    
+    }   catch (SQLException ex) {
+            Logger.getLogger(Reportes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    private void llenarTBAlumno() {
+    String sql="SELECT noCuenta as 'Numero de Cuenta', concat(nombreAlumno,\" \", apellidoAlumno) as 'Nombre Completo', carreraAlumno as 'Carrera', emaiAlumno as 'Correo ELectronico', telefono as 'No Telefonico', lugar_proc_alumno as 'Direccion' from Alumno";
+        try {
+            operaciones op = new operaciones();
+            ResultSet rs=op.ConsultaBase(sql);
+           ResultSetMetaData Columnas = rs.getMetaData();
+            
+            DefaultTableModel alumno=new DefaultTableModel();
+            int cantidadColumnas = Columnas.getColumnCount();
+            for (int i = 1; i <= cantidadColumnas; i++) {
+                    alumno.addColumn(Columnas.getColumnLabel(i)); //Agrega columnas al modelo con el titulo extraido de la metadata
+             }
+             //Extrae las filas del resultSet y los para al modelo
+                while (rs.next()) {
+                       Object[] fila = new Object[cantidadColumnas];
+                        for (int i = 0; i < cantidadColumnas; i++) {
+                                 fila[i]=rs.getObject(i+1);
+                        }
+                 alumno.addRow(fila); //agregamos al modelo la fila extraida.
+                }
+                
+            tabla_alumno.setModel(alumno);
+            
+    
+    }   catch (SQLException ex) {
+            Logger.getLogger(Reportes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    private void llenarTBDenuncias() {
+    String sql="SELECT noDenuncia as 'Numero de Denuncia', fechaDenuncia as 'Fecha de Creacion', tipo_Denuncia as 'Tipo Denunciante- Denunciado', remitido as 'Denunciante', denunciado as 'Denunciado', motivoDenuncia as 'Observaciones' from Denuncia";
+        try {
+            operaciones op = new operaciones();
+            ResultSet rs=op.ConsultaBase(sql);
+           ResultSetMetaData Columnas = rs.getMetaData();
+            
+            DefaultTableModel denuncias=new DefaultTableModel();
+            int cantidadColumnas = Columnas.getColumnCount();
+            for (int i = 1; i <= cantidadColumnas; i++) {
+                    denuncias.addColumn(Columnas.getColumnLabel(i)); //Agrega columnas al modelo con el titulo extraido de la metadata
+             }
+             //Extrae las filas del resultSet y los para al modelo
+                while (rs.next()) {
+                       Object[] fila = new Object[cantidadColumnas];
+                        for (int i = 0; i < cantidadColumnas; i++) {
+                                 fila[i]=rs.getObject(i+1);
+                        }
+                 denuncias.addRow(fila); //agregamos al modelo la fila extraida.
+                }
+                
+            tb_Denuncias.setModel(denuncias);
+            
+    
+    }   catch (SQLException ex) {
+            Logger.getLogger(Reportes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     private void generarReporteAsignatura() {
     String sql="SELECT c.idEmpleado as 'No de Identidad', concat(e.nombreEmpleado,' ', e.apellidoEmpleado) as 'Nombre Completo', v.nombreArea as 'Area',e.emailEmp as 'Correo ELectronico', e.telefonoEmpleado as 'Telefono'FROM Empleado e" +
                    "JOIN Catedratico c" +"ON e.idEmpleado = c.idEmpleado" +"JOIN Area v" +"ON c.idArea = v.idArea";

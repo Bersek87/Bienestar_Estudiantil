@@ -18,18 +18,18 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Eden
  */
-public class SeleccionarCatedratico extends javax.swing.JFrame {
-    private String cuenta;
+public class SeleccionarAsignatura extends javax.swing.JFrame {
+    private String codigo;
 
     /**
      * Creates new form Catedratico
      */
-    public SeleccionarCatedratico() {
+    public SeleccionarAsignatura() {
         initComponents();
         try {
-            ListarMaestros();
+            ListarAsignaturas();
         } catch (SQLException ex) {
-            Logger.getLogger(SeleccionarCatedratico.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SeleccionarAsignatura.class.getName()).log(Level.SEVERE, null, ex);
         }
         }
 
@@ -42,46 +42,31 @@ public class SeleccionarCatedratico extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        txt_carrera = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        TxtEmail = new javax.swing.JTextField();
         TxtCuenta = new javax.swing.JTextField();
         label1 = new java.awt.Label();
-        jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla_busqueda = new javax.swing.JTable();
-        TxtTel = new javax.swing.JTextField();
         btn_ok = new javax.swing.JButton();
         TxtNombre = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
         btn_cancel = new javax.swing.JButton();
+        checkbox1 = new java.awt.Checkbox();
+        checkbox2 = new java.awt.Checkbox();
+        checkbox3 = new java.awt.Checkbox();
+        jComboBox1 = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        txt_carrera.setEditable(false);
-        txt_carrera.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_carreraActionPerformed(evt);
-            }
-        });
-
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel1.setText("No de ID");
+        jLabel1.setText("Codigo");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Nombres");
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setText("Area");
-
-        TxtEmail.setEditable(false);
-        TxtEmail.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TxtEmailActionPerformed(evt);
-            }
-        });
 
         TxtCuenta.setToolTipText("");
         TxtCuenta.addActionListener(new java.awt.event.ActionListener() {
@@ -91,32 +76,29 @@ public class SeleccionarCatedratico extends javax.swing.JFrame {
         });
 
         label1.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 36)); // NOI18N
-        label1.setText("Datos del Maestro");
+        label1.setText("Seleccione Asignatura");
         label1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 label1KeyPressed(evt);
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel6.setText("Telefono");
-
         tabla_busqueda.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "No de ID", "Nombres", "Area", "E-mail", "Telefono"
+                "Codigo", "Nombre", "Area"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                true, false, false, false, false
+                true, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -129,13 +111,6 @@ public class SeleccionarCatedratico extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(tabla_busqueda);
-
-        TxtTel.setEditable(false);
-        TxtTel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TxtTelActionPerformed(evt);
-            }
-        });
 
         btn_ok.setText("Confirmar");
         btn_ok.addActionListener(new java.awt.event.ActionListener() {
@@ -150,13 +125,16 @@ public class SeleccionarCatedratico extends javax.swing.JFrame {
             }
         });
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel7.setText("E-mail");
-
         btn_cancel.setText("Cancelar");
         btn_cancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_cancelActionPerformed(evt);
+            }
+        });
+
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
             }
         });
 
@@ -177,65 +155,55 @@ public class SeleccionarCatedratico extends javax.swing.JFrame {
                                         .addComponent(TxtCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(4, 4, 4)
-                                        .addComponent(TxtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(62, 62, 62)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel6))
-                                .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(TxtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
+                                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(TxtTel)
-                                    .addComponent(TxtEmail))
-                                .addGap(493, 493, 493))
+                                    .addComponent(checkbox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(checkbox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(checkbox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(186, 186, 186)
-                                .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(595, 595, 595))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txt_carrera, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE))))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                                .addGap(4, 4, 4)
+                                .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(btn_ok, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35)
                 .addComponent(btn_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(276, 276, 276))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 688, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 12, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(21, 21, 21)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
-                            .addComponent(TxtCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(TxtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(10, 10, 10)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_carrera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(TxtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(TxtTel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6))))
+                            .addComponent(TxtCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(checkbox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(TxtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(checkbox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(checkbox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
                 .addGap(41, 41, 41)
@@ -247,14 +215,6 @@ public class SeleccionarCatedratico extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txt_carreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_carreraActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_carreraActionPerformed
-
-    private void TxtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtEmailActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TxtEmailActionPerformed
 
     private void TxtCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtCuentaActionPerformed
         // TODO add your handling code here:
@@ -268,7 +228,7 @@ public class SeleccionarCatedratico extends javax.swing.JFrame {
     private void Cierre(java.awt.event.WindowEvent evt) {                        
         dispose();
     }
-    private void ListarMaestros() throws SQLException{ //Cargamos la tabla con la lista de personas
+    private void ListarAsignaturas() throws SQLException{ //Cargamos la tabla con la lista de personas
          //Creamos un objeto alumno
          DefaultTableModel modelo = new DefaultTableModel();
          {
@@ -276,8 +236,8 @@ public class SeleccionarCatedratico extends javax.swing.JFrame {
                //select * from persona where apellidos ||' ' || nombres like 'Diaz Perez Jo%'
              operaciones consulta=new operaciones(); //crea un objeto de la clase consulta
              
-             ResultSet resultado=consulta.ConsultaBase("SELECT c.idEmpleado as 'No de Identidad', concat(e.nombreEmpleado,' ', e.apellidoEmpleado) as 'Nombre Completo', v.nombreArea as 'Area',e.emailEmp as 'Correo ELectronico', e.telefonoEmpleado as 'Telefono'FROM Empleado e\n" +
-                                                        "JOIN Catedratico c\n" +"ON e.idEmpleado = c.idEmpleado\n" +"JOIN Area v\n" +"ON c.idArea = v.idArea");
+            ResultSet resultado=consulta.ConsultaBase("SELECT idAsignatura as 'Codigo de Asignatura', nombreAsignatura as 'Asignatura'" +
+                                                        "from Asignatura c\n");
              
                                     
              //Obteniendo la informacion de las columnas que estan siendo consultadas
@@ -285,7 +245,7 @@ public class SeleccionarCatedratico extends javax.swing.JFrame {
              //La cantidad de columnas que tiene la consulta
              int cantidadColumnas = Columnas.getColumnCount();
              
-             System.out.println(Columnas.getColumnLabel(1).toString());
+             
              
              //Establecer como cabezeras el nombre de las columnas
              for (int i = 1; i <= cantidadColumnas; i++) {
@@ -303,13 +263,9 @@ public class SeleccionarCatedratico extends javax.swing.JFrame {
         
         
         
-        Logica.ClsProfesor profe=new Logica.ClsProfesor();
-        //Creamos un modelo de tabla
         
         
-        
-        //Extraemos la lista de personas dentro de un modelo
-        modelo=(DefaultTableModel) profe.ListarProfesor();
+
 
         //Asociamos el modelo al JTable
         this.tabla_busqueda.setModel(modelo);
@@ -336,26 +292,20 @@ public class SeleccionarCatedratico extends javax.swing.JFrame {
     private void tabla_busquedaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla_busquedaMousePressed
         int row = tabla_busqueda.getSelectedRow();
         String id=tabla_busqueda.getValueAt(row, 0).toString();
-        TxtCuenta.setText(id);    cuenta=id;
+        TxtCuenta.setText(id);    codigo=id;
         TxtNombre.setText(tabla_busqueda.getValueAt(row, 1).toString());
-        txt_carrera.setText(tabla_busqueda.getValueAt(row, 2).toString());
-        TxtEmail.setText(tabla_busqueda.getValueAt(row, 3).toString());
-        TxtTel.setText(tabla_busqueda.getValueAt(row, 4).toString());
+       
         
 
     }//GEN-LAST:event_tabla_busquedaMousePressed
-
-    private void TxtTelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtTelActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TxtTelActionPerformed
 
     private void btn_okActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_okActionPerformed
         // TODO add your handling code here:
         int valDen=Denuncias.cb_tipo_denuncia_ge.getSelectedIndex();
         if(valDen==1){
-            Denuncias.denunciado(cuenta);}
+            Denuncias.denunciado(codigo);}
         if(valDen==2){
-            Denuncias.denunciante(cuenta);}
+            Denuncias.denunciante(codigo);}
         
         dispose();
     }//GEN-LAST:event_btn_okActionPerformed
@@ -370,6 +320,10 @@ public class SeleccionarCatedratico extends javax.swing.JFrame {
         
        
     }//GEN-LAST:event_btn_cancelActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -388,40 +342,41 @@ public class SeleccionarCatedratico extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SeleccionarCatedratico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SeleccionarAsignatura.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SeleccionarCatedratico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SeleccionarAsignatura.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SeleccionarCatedratico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SeleccionarAsignatura.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SeleccionarCatedratico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SeleccionarAsignatura.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SeleccionarCatedratico().setVisible(true);
+                new SeleccionarAsignatura().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField TxtCuenta;
-    private javax.swing.JTextField TxtEmail;
     private javax.swing.JTextField TxtNombre;
-    private javax.swing.JTextField TxtTel;
     private javax.swing.JButton btn_cancel;
     private javax.swing.JButton btn_ok;
+    private java.awt.Checkbox checkbox1;
+    private java.awt.Checkbox checkbox2;
+    private java.awt.Checkbox checkbox3;
+    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private java.awt.Label label1;
     private javax.swing.JTable tabla_busqueda;
-    private javax.swing.JTextField txt_carrera;
     // End of variables declaration//GEN-END:variables
 }

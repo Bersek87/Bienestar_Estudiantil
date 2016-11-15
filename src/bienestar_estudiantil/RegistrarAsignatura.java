@@ -28,6 +28,38 @@ public class RegistrarAsignatura extends javax.swing.JFrame {
      */
     public RegistrarAsignatura() {
         initComponents();
+        codAsig();
+    }
+    public void codAsig(){
+        try {
+            // TODO add your handling code here:
+            Connection conn = null;
+            String   sql = null;
+            ResultSet rs = null;
+            Statement  st = null;
+            int contador=0;
+            String texto=null;
+            
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bienestar_estudiantil","root","liberal");
+            st = conn.createStatement();
+            rs = st.executeQuery ("select count(*)+1 as 'numero' from asignatura;");
+            while(rs.next()){
+                //Aca le digo que muestre el valor en un JtextFiel
+                if (rs.getString("numero")==null){
+                    texto="1"; 
+                    txt_cod.setText(texto);
+              }
+                else {
+                    texto=rs.getString("numero");
+                    txt_cod.setText(texto);
+                                  
+                }
+                txt_cod.setText(texto);
+                System.out.println(rs.getString("numero")+1);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Denuncias.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -42,13 +74,16 @@ public class RegistrarAsignatura extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        lb_nom = new javax.swing.JLabel();
         TxtNAsig = new javax.swing.JTextField();
+        txt_cod = new javax.swing.JTextField();
+        lb_cod = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Bienestar Estudiantil PAEE");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel1.setText("Registro de Asignaturas");
@@ -75,7 +110,11 @@ public class RegistrarAsignatura extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabel2.setText("Nombre de la Asignatura");
+        lb_nom.setText("Nombre de la Asignatura");
+
+        txt_cod.setEnabled(false);
+
+        lb_cod.setText("Codigo de la Asignatura");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -83,19 +122,27 @@ public class RegistrarAsignatura extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
-                .addComponent(jLabel2)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lb_nom)
+                    .addComponent(lb_cod))
                 .addGap(18, 18, 18)
-                .addComponent(TxtNAsig, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txt_cod)
+                    .addComponent(TxtNAsig, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
+                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                    .addComponent(lb_cod)
+                    .addComponent(txt_cod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lb_nom)
                     .addComponent(TxtNAsig, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         jButton1.setText("Guardar");
@@ -118,9 +165,9 @@ public class RegistrarAsignatura extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -128,9 +175,9 @@ public class RegistrarAsignatura extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButton1)
-                .addGap(30, 30, 30)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton2)
-                .addContainerGap(309, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -146,8 +193,9 @@ public class RegistrarAsignatura extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(5, 5, 5)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -157,14 +205,17 @@ public class RegistrarAsignatura extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       
         try {
-            // TODO add your handling code here:
             guardar();
+            codAsig();
+            
         } catch (SQLException ex) {
             Logger.getLogger(RegistrarAsignatura.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(RegistrarAsignatura.class.getName()).log(Level.SEVERE, null, ex);
         }
+       
     }
     public boolean guardar() throws  SQLException, ClassNotFoundException{
  String insert = "insert into Asignatura(idAsignatura, nombreAsignatura) values(?,?)";
@@ -176,8 +227,8 @@ Class.forName("com.mysql.jdbc.Driver");
  
  
  ps = conexion.prepareStatement(insert);
- ps.setString(2,  TxtNAsig.getText());
- Connection conn = null;     
+
+       Connection conn = null;     
        String   sql = null;
        ResultSet rs = null;
        Statement  st = null;     
@@ -186,7 +237,7 @@ Class.forName("com.mysql.jdbc.Driver");
              
              conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bienestar_estudiantil","root","liberal");
               st = conn.createStatement();
-              rs = st.executeQuery ("select count(*) from Asignatura;");
+              rs = st.executeQuery ("select count(*) from asignatura;");
      
           while(rs.next()){
                c=rs.getString(1);
@@ -195,6 +246,7 @@ Class.forName("com.mysql.jdbc.Driver");
            }
           int j = Integer.parseInt(c);
           ps.setInt(1, j+1);
+          ps.setString(2,TxtNAsig.getText().toString());
           conn.close();
          } catch (Exception e) {
              System.out.println("ERROR: failed to load HSQLDB JDBC driver.");
@@ -203,7 +255,7 @@ Class.forName("com.mysql.jdbc.Driver");
          }
  
  
- 
+  
  ps.executeUpdate();
  conexion.commit();
 JOptionPane.showMessageDialog(null, "Se ha Guardado el Registro exitosamente");
@@ -279,9 +331,11 @@ TxtNAsig.setText("");
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel lb_cod;
+    private javax.swing.JLabel lb_nom;
+    private javax.swing.JTextField txt_cod;
     // End of variables declaration//GEN-END:variables
 }
